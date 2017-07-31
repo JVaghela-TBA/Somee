@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TestAmbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="admin_user">
+          <Key>
+            <PropertyRef Name="uid" />
+          </Key>
+          <Property Name="uid" Type="int" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pdf">
+          <Key>
+            <PropertyRef Name="pdfid" />
+          </Key>
+          <Property Name="pdfid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pdfname" Type="varchar" MaxLength="50" />
+          <Property Name="pdfpath" Type="varchar(max)" />
+          <Property Name="pdfsize" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="pdfdetail" Type="text" />
+        </EntityType>
+        <EntityContainer Name="TestAmbModelStoreContainer">
+          <EntitySet Name="admin_user" EntityType="Self.admin_user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pdf" EntityType="Self.pdf" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TestAmbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdminUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="TestAmbEntity" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdminUsers" EntityType="TestAmbModel.AdminUser" />
+          <EntitySet Name="Pdfs1" EntityType="TestAmbModel.Pdf" />
+        </EntityContainer>
+        <EntityType Name="Pdf">
+          <Key>
+            <PropertyRef Name="PdfId" />
+          </Key>
+          <Property Name="PdfId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PdfName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PdfPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PdfSize" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PdfDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TestAmbModelStoreContainer" CdmEntityContainer="TestAmbEntity">
+          <EntitySetMapping Name="AdminUsers">
+            <EntityTypeMapping TypeName="TestAmbModel.AdminUser">
+              <MappingFragment StoreEntitySet="admin_user">
+                <ScalarProperty Name="UserId" ColumnName="uid" />
+                <ScalarProperty Name="Username" ColumnName="username" />
+                <ScalarProperty Name="Password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pdfs1">
+            <EntityTypeMapping TypeName="TestAmbModel.Pdf">
+              <MappingFragment StoreEntitySet="pdf">
+                <ScalarProperty Name="PdfDetail" ColumnName="pdfdetail" />
+                <ScalarProperty Name="PdfSize" ColumnName="pdfsize" />
+                <ScalarProperty Name="PdfPath" ColumnName="pdfpath" />
+                <ScalarProperty Name="PdfName" ColumnName="pdfname" />
+                <ScalarProperty Name="PdfId" ColumnName="pdfid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

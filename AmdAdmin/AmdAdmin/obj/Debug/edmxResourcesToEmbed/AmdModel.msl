@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TestAmbModelStoreContainer" CdmEntityContainer="TestAmbEntity">
+    <EntitySetMapping Name="AdminUsers">
+      <EntityTypeMapping TypeName="TestAmbModel.AdminUser">
+        <MappingFragment StoreEntitySet="admin_user">
+          <ScalarProperty Name="UserId" ColumnName="uid" />
+          <ScalarProperty Name="Username" ColumnName="username" />
+          <ScalarProperty Name="Password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pdfs1">
+      <EntityTypeMapping TypeName="TestAmbModel.Pdf">
+        <MappingFragment StoreEntitySet="pdf">
+          <ScalarProperty Name="PdfDetail" ColumnName="pdfdetail" />
+          <ScalarProperty Name="PdfSize" ColumnName="pdfsize" />
+          <ScalarProperty Name="PdfPath" ColumnName="pdfpath" />
+          <ScalarProperty Name="PdfName" ColumnName="pdfname" />
+          <ScalarProperty Name="PdfId" ColumnName="pdfid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

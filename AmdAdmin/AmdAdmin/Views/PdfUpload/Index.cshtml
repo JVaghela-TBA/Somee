@@ -1,0 +1,49 @@
+﻿@model IEnumerable<AmdAdmin.Pdf>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_main.cshtml";
+}
+
+<h2>PDF</h2>
+
+<p>
+    @Html.ActionLink("Upload New", "Create")
+</p>
+<p class="bottomBorder"></p>
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Detail
+        </th>
+        <th>
+            Size(in mb)
+        </th>
+        <th></th>
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PdfName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PdfDetail)
+        </td>
+        <td>
+            @{
+                decimal? size = (item.PdfSize / 1024) / 1024;
+            }
+            @Html.DisplayFor(modelItem => size)
+        </td>
+        <td>
+            @Html.ActionLink("View", "ShowPdf", new { id = item.PdfId }) |
+            @Html.ActionLink("Edit", "Edit", new {id = item.PdfId}) |
+            @Html.ActionLink("Details", "Details", new {id = item.PdfId}) |
+            @Html.ActionLink("Delete", "Delete", new {id = item.PdfId})
+        </td>
+    </tr>
+}
+</table>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TestAmbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AdminUser">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="TestAmbEntity" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AdminUsers" EntityType="TestAmbModel.AdminUser" />
+    <EntitySet Name="Pdfs1" EntityType="TestAmbModel.Pdf" />
+  </EntityContainer>
+  <EntityType Name="Pdf">
+    <Key>
+      <PropertyRef Name="PdfId" />
+    </Key>
+    <Property Name="PdfId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PdfName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PdfPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PdfSize" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="PdfDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

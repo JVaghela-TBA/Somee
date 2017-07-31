@@ -1,0 +1,7 @@
+﻿body {
+    margin-top: 40px;
+}
+.bottomBorder {
+    padding-top: 1px;
+    border-bottom: 3px solid #ccc;
+}
